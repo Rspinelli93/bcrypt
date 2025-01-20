@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router() 
 // Con esto de arriba, Montas el enrutado, de la misma forma que para app.js necesitas la aplicacion para abrir el servidor, esta es para usar la aplicacion para hacer las rutas
 
-const hashedSecret = require('./crypto/config')
+const { hashedSecret } = require('./crypto/config');
 
 //!
 // Crear un token, usando la funcion sing(). 
@@ -71,3 +71,4 @@ router.post('/logout', (req, res) => {
 });
 
 
+module.exports = router;

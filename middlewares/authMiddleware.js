@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const hashedSecret = require('./crypto/config')
+const { hashedSecret } = require('./crypto/config');
 
 // - Middleware que verifica la validez del token almacenado en la sesión.
 
@@ -17,7 +17,8 @@ function verifyToken(req, res, next) {
           .status(401)
           .json({ message: 'Token inválido', error: err.message });
       }
-
+      
+      // Attach user information from the token to the request object
       req.user = decoded.user;
       next();
   });
@@ -25,6 +26,4 @@ function verifyToken(req, res, next) {
 
 
 
-module.exports = {
-    verifyToken,
-}
+module.exports = { verifyToken }
